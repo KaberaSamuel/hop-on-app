@@ -1,4 +1,4 @@
-import { Colors } from "@/constants/Colors";
+import { Colors } from "@/constants/globalStyles";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
