@@ -12,7 +12,10 @@ export default function Index() {
       <View style={styles.textContainer}>
         <Text style={styles.text}>Welcome To Hop On App</Text>
         <Link href="/about" style={styles.button}>
-          Go to about page
+          Go to about screen
+        </Link>
+        <Link href="/account" style={styles.button}>
+          Go to account screen
         </Link>
       </View>
     </View>
