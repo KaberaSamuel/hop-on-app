@@ -1,10 +1,10 @@
 import { Colors } from "@/constants/globalStyles";
 import { StyleSheet, Text, View } from "react-native";
 
-export default function About() {
+export default function Account() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>About us</Text>
+      <Text style={styles.text}>My Account</Text>
     </View>
   );
 }

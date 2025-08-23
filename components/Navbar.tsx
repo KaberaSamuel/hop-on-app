@@ -1,17 +1,27 @@
 import { Colors, CommonStyles } from "@/constants/globalStyles";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { StyleSheet, TextInput, View } from "react-native";
+import type { DrawerNavigationProp } from "@react-navigation/drawer";
+import { useNavigation } from "@react-navigation/native";
+import { Pressable, StyleSheet, TextInput, View } from "react-native";
+
+type RootParamList = {
+  Home: undefined;
+};
 
 export default function Navbar() {
+  const navigation = useNavigation<DrawerNavigationProp<RootParamList>>();
+
   return (
     <View style={styles.container}>
       <View style={styles.topBar}>
-        <MaterialIcons
-          name="menu"
-          size={24}
-          color="black"
-          style={CommonStyles.icon}
-        />
+        <Pressable onPress={() => navigation.openDrawer()}>
+          <MaterialIcons
+            name="menu"
+            size={24}
+            color="black"
+            style={CommonStyles.icon}
+          />
+        </Pressable>
         <MaterialIcons
           name="notifications"
           size={24}
