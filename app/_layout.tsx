@@ -1,10 +1,11 @@
-import { Colors } from "@/constants/globalStyles";
+import CustomDrawer from "@/components/CustomDrawer";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useRouter } from "expo-router";
-import Drawer from "expo-router/drawer";
+import { Drawer } from "expo-router/drawer";
 import React from "react";
 import { Pressable } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export type RootParamList = {
   home: undefined;
@@ -25,47 +26,62 @@ const RootLayout = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
+        drawerContent={CustomDrawer}
         screenOptions={{
-          headerShown: true,
+          headerShown: false,
+          drawerHideStatusBarOnOpen: true,
           drawerStyle: {
-            backgroundColor: Colors.dark[2],
-          },
-          drawerLabelStyle: {
-            color: "white",
-          },
-          headerStyle: {
-            backgroundColor: Colors.dark[2],
-          },
-          headerTintColor: "white",
-          headerTitleStyle: {
-            fontWeight: "bold",
+            backgroundColor: Colors.white,
           },
         }}
       >
         <Drawer.Screen
           name="index"
           options={{
-            drawerLabel: "Home",
             title: "Home",
-            headerShown: false,
+            drawerLabel: "Home",
+            drawerIcon: ({ size }) => (
+              <MaterialIcons name="home" size={size} color="white" />
+            ),
           }}
         />
-        <Drawer.Screen
-          name="about"
-          options={{
-            drawerLabel: "About",
-            title: "About Us",
-            headerShown: true,
-            headerLeft: () => <BackButton />, // Custom back button
-          }}
-        />
+
         <Drawer.Screen
           name="account"
           options={{
             drawerLabel: "My Account",
             title: "My Account",
             headerShown: true,
-            headerLeft: () => <BackButton />, // Custom back button
+            headerLeft: () => <BackButton />,
+            drawerIcon: ({ size }) => (
+              <MaterialIcons name="account-circle" size={size} color="white" />
+            ),
+          }}
+        />
+
+        <Drawer.Screen
+          name="payments"
+          options={{
+            drawerLabel: "My Payments",
+            title: "My Payments",
+            headerShown: true,
+            headerLeft: () => <BackButton />,
+            drawerIcon: ({ size }) => (
+              <MaterialIcons name="payment" size={size} color="white" />
+            ),
+          }}
+        />
+
+        <Drawer.Screen
+          name="trip-history"
+          options={{
+            drawerLabel: "Trip History",
+            title: "Trip History",
+            headerShown: true,
+            headerLeft: () => <BackButton />,
+            drawerIcon: ({ size }) => (
+              <MaterialIcons name="history" size={size} color="white" />
+            ),
           }}
         />
       </Drawer>

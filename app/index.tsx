@@ -1,22 +1,16 @@
 import { Colors } from "@/constants/globalStyles";
-import { Link } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { StatusBar, StyleSheet, Text, View } from "react-native";
 
 import Navbar from "@/components/Navbar";
 
 export default function Index() {
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="light-content" />
       <Navbar />
 
       <View style={styles.textContainer}>
         <Text style={styles.text}>Welcome To Hop On App</Text>
-        <Link href="/about" style={styles.button}>
-          Go to about screen
-        </Link>
-        <Link href="/account" style={styles.button}>
-          Go to account screen
-        </Link>
       </View>
     </View>
   );
