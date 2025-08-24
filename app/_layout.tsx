@@ -1,11 +1,11 @@
 import CustomDrawer from "@/components/CustomDrawer";
+import { Colors } from "@/constants/globalStyles";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useRouter } from "expo-router";
 import { Drawer } from "expo-router/drawer";
 import React from "react";
 import { Pressable } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export type RootParamList = {
   home: undefined;
