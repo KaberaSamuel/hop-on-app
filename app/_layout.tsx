@@ -11,13 +11,17 @@ export type RootParamList = {
   home: undefined;
 };
 
+const drawerItemStyle = {
+  marginVertical: -2,
+};
+
 // Button for navigating back
 const BackButton = () => {
   const router = useRouter();
 
   return (
     <Pressable onPress={() => router.back()} style={{ padding: 8 }}>
-      <MaterialIcons name="arrow-back" size={24} color="white" />
+      <MaterialIcons name="arrow-back" size={24} color={Colors.black} />
     </Pressable>
   );
 };
@@ -30,18 +34,18 @@ const RootLayout = () => {
         screenOptions={{
           headerShown: false,
           drawerHideStatusBarOnOpen: true,
-          drawerStyle: {
-            backgroundColor: Colors.white,
-          },
+          drawerActiveTintColor: Colors.gray[2],
+          drawerActiveBackgroundColor: "transparent",
         }}
       >
         <Drawer.Screen
           name="index"
           options={{
             title: "Home",
+            drawerItemStyle: drawerItemStyle,
             drawerLabel: "Home",
             drawerIcon: ({ size }) => (
-              <MaterialIcons name="home" size={size} color="white" />
+              <MaterialIcons name="home" size={size} color={Colors.gray[2]} />
             ),
           }}
         />
@@ -52,9 +56,14 @@ const RootLayout = () => {
             drawerLabel: "My Account",
             title: "My Account",
             headerShown: true,
+            drawerItemStyle: drawerItemStyle,
             headerLeft: () => <BackButton />,
             drawerIcon: ({ size }) => (
-              <MaterialIcons name="account-circle" size={size} color="white" />
+              <MaterialIcons
+                name="account-circle"
+                size={size}
+                color={Colors.gray[2]}
+              />
             ),
           }}
         />
@@ -65,9 +74,14 @@ const RootLayout = () => {
             drawerLabel: "My Payments",
             title: "My Payments",
             headerShown: true,
+            drawerItemStyle: drawerItemStyle,
             headerLeft: () => <BackButton />,
             drawerIcon: ({ size }) => (
-              <MaterialIcons name="payment" size={size} color="white" />
+              <MaterialIcons
+                name="payment"
+                size={size}
+                color={Colors.gray[2]}
+              />
             ),
           }}
         />
@@ -78,9 +92,14 @@ const RootLayout = () => {
             drawerLabel: "Trip History",
             title: "Trip History",
             headerShown: true,
+            drawerItemStyle: drawerItemStyle,
             headerLeft: () => <BackButton />,
             drawerIcon: ({ size }) => (
-              <MaterialIcons name="history" size={size} color="white" />
+              <MaterialIcons
+                name="history"
+                size={size}
+                color={Colors.gray[2]}
+              />
             ),
           }}
         />

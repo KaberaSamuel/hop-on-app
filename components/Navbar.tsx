@@ -35,8 +35,7 @@ export default function Navbar() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 50,
-    paddingBottom: 30,
+    paddingVertical: 25,
     paddingHorizontal: 10,
     gap: 25,
     backgroundColor: Colors.dark[2],

@@ -1,9 +1,13 @@
 import { StyleSheet } from "react-native";
 
+export const baseFontSize = 16
+
 export const Colors = {
   white: "#fff",
   black: "#000",
-  gray: { 1: "#9ca3af", 2: "#6b7280" },
+  blue: "#2b7fff",
+
+  gray: {1: "#d4d4d4",2:"#6b7280"},
 
   dark: {
     1: "#262626",
