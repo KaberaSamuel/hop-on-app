@@ -4,6 +4,7 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from "@react-navigation/drawer";
+import { Link } from "expo-router";
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -35,9 +36,9 @@ export default function CustomDrawer(props: any) {
 
         {/* footer */}
         <View style={styles.footerContainer}>
-          <Pressable>
+          <Link href="/settings">
             <Text style={styles.footerItem}>Settings</Text>
-          </Pressable>
+          </Link>
 
           <Pressable>
             <Text style={styles.footerItem}>About</Text>

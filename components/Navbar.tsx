@@ -1,4 +1,4 @@
-import { RootParamList } from "@/app/_layout";
+import { RootParamList } from "@/app/(drawer)/_layout";
 import { Colors, CommonStyles } from "@/constants/globalStyles";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import type { DrawerNavigationProp } from "@react-navigation/drawer";
