@@ -4,9 +4,12 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from "@react-navigation/drawer";
+import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function CustomDrawer(props: any) {
+  const { top } = useSafeAreaInsets();
   return (
     <View style={styles.container}>
       <DrawerContentScrollView
@@ -55,14 +58,19 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     backgroundColor: Colors.white,
     position: "relative",
+    // marginTop: top,
   },
 
   profileContainer: {
     alignItems: "center",
     paddingTop: 40,
     paddingBottom: 30,
-    paddingRight: 20,
+    paddingRight: 10,
     backgroundColor: Colors.dark[1],
+
+    // extending to borders
+    marginTop: -20,
+    marginHorizontal: -20,
   },
 
   username: {
@@ -79,18 +87,18 @@ const styles = StyleSheet.create({
 
   screensContainer: {
     flex: 1,
+    paddingTop: 20,
     borderRadius: 0,
-    paddingVertical: 20,
-    paddingHorizontal: 10,
-    borderBottomColor: Colors.gray[2],
-    borderBottomWidth: 1,
-    borderStyle: "solid",
   },
 
   footerContainer: {
-    gap: 20,
+    gap: 30,
     paddingVertical: 20,
     paddingHorizontal: 30,
+    marginHorizontal: -10,
+    borderTopColor: Colors.gray[2],
+    borderTopWidth: 1,
+    borderStyle: "solid",
   },
 
   footerItem: {
