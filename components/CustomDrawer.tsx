@@ -4,9 +4,11 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from "@react-navigation/drawer";
+import React, { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function CustomDrawer(props: any) {
+  const [drawerOffset, setDrawerOffset] = useState(20);
   return (
     <View style={styles.container}>
       <DrawerContentScrollView
@@ -15,7 +17,24 @@ export default function CustomDrawer(props: any) {
         contentContainerStyle={{ flex: 1, padding: 0 }}
       >
         {/* profile */}
-        <View style={styles.profileContainer}>
+        <View
+          style={[
+            styles.profileContainer,
+            // counteracting padding offset
+            {
+              marginTop: -drawerOffset,
+              marginHorizontal: -drawerOffset,
+            },
+          ]}
+          onLayout={(event) => {
+            const { x, width } = event.nativeEvent.layout;
+            // Update offset
+            if (x > 0 && x !== drawerOffset) {
+              // adding 5 pixels to ensure profile reaches parent borders
+              setDrawerOffset(x + 5);
+            }
+          }}
+        >
           <MaterialIcons
             name="account-circle"
             size={100}
@@ -59,7 +78,7 @@ const styles = StyleSheet.create({
 
   profileContainer: {
     alignItems: "center",
-    paddingTop: 40,
+    paddingTop: 60,
     paddingBottom: 30,
     paddingRight: 20,
     backgroundColor: Colors.dark[1],
@@ -79,18 +98,18 @@ const styles = StyleSheet.create({
 
   screensContainer: {
     flex: 1,
+    paddingTop: 20,
     borderRadius: 0,
-    paddingVertical: 20,
-    paddingHorizontal: 10,
-    borderBottomColor: Colors.gray[2],
-    borderBottomWidth: 1,
-    borderStyle: "solid",
   },
 
   footerContainer: {
-    gap: 20,
+    gap: 30,
     paddingVertical: 20,
     paddingHorizontal: 30,
+    marginHorizontal: -10,
+    borderTopColor: Colors.gray[2],
+    borderTopWidth: 1,
+    borderStyle: "solid",
   },
 
   footerItem: {

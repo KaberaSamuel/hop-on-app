@@ -11,10 +11,6 @@ export type RootParamList = {
   home: undefined;
 };
 
-const drawerItemStyle = {
-  marginVertical: -2,
-};
-
 // Button for navigating back
 const BackButton = () => {
   const router = useRouter();
@@ -42,7 +38,6 @@ const RootLayout = () => {
           name="index"
           options={{
             title: "Home",
-            drawerItemStyle: drawerItemStyle,
             drawerLabel: "Home",
             drawerIcon: ({ size }) => (
               <MaterialIcons name="home" size={size} color={Colors.gray[2]} />
@@ -56,7 +51,6 @@ const RootLayout = () => {
             drawerLabel: "My Account",
             title: "My Account",
             headerShown: true,
-            drawerItemStyle: drawerItemStyle,
             headerLeft: () => <BackButton />,
             drawerIcon: ({ size }) => (
               <MaterialIcons
@@ -74,7 +68,6 @@ const RootLayout = () => {
             drawerLabel: "My Payments",
             title: "My Payments",
             headerShown: true,
-            drawerItemStyle: drawerItemStyle,
             headerLeft: () => <BackButton />,
             drawerIcon: ({ size }) => (
               <MaterialIcons
@@ -92,7 +85,6 @@ const RootLayout = () => {
             drawerLabel: "Trip History",
             title: "Trip History",
             headerShown: true,
-            drawerItemStyle: drawerItemStyle,
             headerLeft: () => <BackButton />,
             drawerIcon: ({ size }) => (
               <MaterialIcons
