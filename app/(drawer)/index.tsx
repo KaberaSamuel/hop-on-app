@@ -7,6 +7,7 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={Colors.dark[3]} />
+
       <Navbar />
 
       <View style={styles.textContainer}>

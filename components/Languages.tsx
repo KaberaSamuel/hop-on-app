@@ -1,5 +1,4 @@
-import { styles as settingsStyles } from "@/app/settings";
-import { Colors } from "@/constants/globalStyles";
+import { Colors, settingsStyles } from "@/constants/globalStyles";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useState } from "react";
 import { Pressable, Text } from "react-native";

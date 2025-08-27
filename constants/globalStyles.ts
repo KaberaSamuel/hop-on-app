@@ -36,3 +36,66 @@ export const CommonStyles = StyleSheet.create({
     borderRadius: 5,
   },
 });
+
+export const settingsStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: Colors.black,
+  },
+
+  contentContainer: {
+    flex: 1,
+    backgroundColor: Colors.white,
+  },
+
+  profileContainer: {
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    flexDirection: "row",
+    gap: 10,
+    alignItems: "center",
+    backgroundColor: Colors.gray[0],
+  },
+
+  accountContainer: {
+    gap: 2,
+    flex: 1,
+  },
+
+  flexContainer: {
+    flexDirection: "row",
+    gap: 20,
+    alignItems: "center",
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+  },
+
+  topBottomBorders: {
+    borderColor: Colors.gray[1.5],
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+  },
+
+  header: {
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    backgroundColor: Colors.gray[1],
+  },
+
+  delete: {
+    color: "#fb2c36",
+    textTransform: "uppercase",
+  },
+  username: {
+    fontWeight: "600",
+    textTransform: "capitalize",
+  },
+
+  borderBottom: {
+    borderBottomColor: Colors.gray[1.5],
+    borderBottomWidth: 1,
+    borderStyle: "solid",
+  },
+});
