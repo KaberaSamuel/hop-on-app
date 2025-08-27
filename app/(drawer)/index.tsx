@@ -1,14 +1,12 @@
 import Navbar from "@/components/Navbar";
 import OuterContainer from "@/components/OuterContainer";
 import { Colors, CommonStyles } from "@/constants/globalStyles";
-import { useHeaderHeight } from "@react-navigation/elements";
 import { StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function Index() {
   const { top } = useSafeAreaInsets();
-  const headerHeight = useHeaderHeight();
-  // console.log(headerHeight);
+
   return (
     <OuterContainer>
       <View

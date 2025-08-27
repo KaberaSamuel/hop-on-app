@@ -8,10 +8,6 @@ import React from "react";
 import { Pressable } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-export type RootParamList = {
-  home: undefined;
-};
-
 // Button for navigating back
 const BackButton = () => {
   const router = useRouter();

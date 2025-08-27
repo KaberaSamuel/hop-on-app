@@ -4,13 +4,18 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from "@react-navigation/drawer";
-import { Link } from "expo-router";
-import React from "react";
+import { DrawerActions } from "@react-navigation/native";
+import { useRouter } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function CustomDrawer(props: any) {
-  const { top } = useSafeAreaInsets();
+  const router = useRouter();
+
+  const handleNavigation = (route: "/settings") => {
+    props.navigation.dispatch(DrawerActions.closeDrawer());
+    router.push(route);
+  };
+
   return (
     <View style={styles.container}>
       <DrawerContentScrollView
@@ -36,9 +41,9 @@ export default function CustomDrawer(props: any) {
 
         {/* footer */}
         <View style={styles.footerContainer}>
-          <Link href="/settings">
+          <Pressable onPress={() => handleNavigation("/settings")}>
             <Text style={styles.footerItem}>Settings</Text>
-          </Link>
+          </Pressable>
 
           <Pressable>
             <Text style={styles.footerItem}>About</Text>
@@ -59,7 +64,6 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     backgroundColor: Colors.white,
     position: "relative",
-    // marginTop: top,
   },
 
   profileContainer: {

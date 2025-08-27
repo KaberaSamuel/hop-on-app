@@ -8,6 +8,10 @@ export default function RootLayout() {
         name="settings"
         options={{ title: "Settings", headerShown: true }}
       />
+      <Stack.Screen
+        name="test"
+        options={{ title: "Test", headerShown: true }}
+      />
     </Stack>
   );
 }
