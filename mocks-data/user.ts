@@ -1,4 +1,4 @@
-type User = {
+type UserTypes = {
   firstname: string;
   lastname: string;
   email: string;
@@ -9,7 +9,7 @@ type User = {
   school_address?: string | null;
 };
 
-const user: User = {
+const User: UserTypes = {
   firstname: "samuel",
   lastname: "kabera nshuti",
   email: "kaberanshutis@gmail.com",
@@ -17,4 +17,4 @@ const user: User = {
   profile_image: null,
 };
 
-export default user;
+export default User;

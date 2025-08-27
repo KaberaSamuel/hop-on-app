@@ -3,11 +3,11 @@ import { Stack } from "expo-router";
 export default function RootLayout() {
   return (
     <Stack>
+      <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
       <Stack.Screen
         name="settings"
         options={{ title: "Settings", headerShown: true }}
       />
-      <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
     </Stack>
   );
 }

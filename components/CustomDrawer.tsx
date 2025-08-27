@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontSize: baseFontSize * 1.4,
     fontWeight: "600",
-    color: Colors.blue,
+    color: Colors.blue[2],
   },
 
   text: {
