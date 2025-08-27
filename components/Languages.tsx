@@ -27,7 +27,9 @@ function Languages() {
         )}
       </Pressable>
 
-      <Pressable style={settingsStyles.flexContainer}>
+      <Pressable
+        style={[settingsStyles.flexContainer, settingsStyles.topBottomBorders]}
+      >
         <Text
           style={{ flex: 1 }}
           onPress={() => {
