@@ -35,11 +35,10 @@ export default function Navbar() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 40,
-    paddingBottom: 30,
+    paddingVertical: 25,
     paddingHorizontal: 10,
-    gap: 25,
-    backgroundColor: Colors.dark[3],
+    gap: 30,
+    backgroundColor: Colors.dark[2],
   },
 
   topBar: {

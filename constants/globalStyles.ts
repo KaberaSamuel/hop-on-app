@@ -19,8 +19,14 @@ export const Colors = {
 export const CommonStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    padding: 16,
+    backgroundColor: Colors.black,
+  },
+
+  contentContainer: {
+    flex: 1,
+    backgroundColor: Colors.white,
+    borderColor: "red",
+    borderStyle: "solid",
   },
 
   icon: {
@@ -38,15 +44,9 @@ export const CommonStyles = StyleSheet.create({
 });
 
 export const settingsStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.black,
-  },
+  container: CommonStyles.container,
 
-  contentContainer: {
-    flex: 1,
-    backgroundColor: Colors.white,
-  },
+  contentContainer: CommonStyles.contentContainer,
 
   profileContainer: {
     paddingVertical: 15,

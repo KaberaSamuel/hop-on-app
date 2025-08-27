@@ -1,28 +1,33 @@
-import { Colors } from "@/constants/globalStyles";
-import { StatusBar, StyleSheet, Text, View } from "react-native";
-
 import Navbar from "@/components/Navbar";
+import OuterContainer from "@/components/OuterContainer";
+import { Colors, CommonStyles } from "@/constants/globalStyles";
+import { useHeaderHeight } from "@react-navigation/elements";
+import { StyleSheet, Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function Index() {
+  const { top } = useSafeAreaInsets();
+  const headerHeight = useHeaderHeight();
+  // console.log(headerHeight);
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor={Colors.dark[3]} />
+    <OuterContainer>
+      <View
+        style={[
+          CommonStyles.contentContainer,
+          { marginBottom: -10, transform: [{ translateY: top }] },
+        ]}
+      >
+        <Navbar />
 
-      <Navbar />
-
-      <View style={styles.textContainer}>
-        <Text style={styles.text}>Welcome To Hop On App</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.text}>Welcome To Hop On App</Text>
+        </View>
       </View>
-    </View>
+    </OuterContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.white,
-  },
-
   textContainer: {
     flex: 1,
     alignItems: "center",

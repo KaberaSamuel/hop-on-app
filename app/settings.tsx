@@ -1,21 +1,20 @@
 import Languages from "@/components/Languages";
+import OuterContainer from "@/components/OuterContainer";
 import { Colors, settingsStyles } from "@/constants/globalStyles";
 import User from "@/mocks-data/user";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useState } from "react";
 import { ScrollView, Switch, Text, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function Settings() {
   const fullname = User.firstname + " " + User.lastname;
 
-  const { bottom } = useSafeAreaInsets();
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   return (
-    <ScrollView>
-      <View style={[settingsStyles.container, { paddingBottom: bottom }]}>
+    <OuterContainer>
+      <ScrollView>
         <View style={settingsStyles.contentContainer}>
           {/* profile */}
           <View style={settingsStyles.profileContainer}>
@@ -147,7 +146,7 @@ export default function Settings() {
             <Text style={settingsStyles.delete}>Delete account</Text>
           </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </OuterContainer>
   );
 }

@@ -1,4 +1,5 @@
 import CustomDrawer from "@/components/CustomDrawer";
+import OuterContainer from "@/components/OuterContainer";
 import { Colors } from "@/constants/globalStyles";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useRouter } from "expo-router";
@@ -24,77 +25,79 @@ const BackButton = () => {
 
 const RootLayout = () => {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <Drawer
-        drawerContent={CustomDrawer}
-        screenOptions={{
-          headerShown: false,
-          drawerActiveTintColor: Colors.gray[2],
-        }}
-      >
-        <Drawer.Screen
-          name="index"
-          options={{
-            title: "Home",
-            drawerLabel: "Home",
-            drawerIcon: ({ size }) => (
-              <MaterialIcons name="home" size={size} color={Colors.gray[2]} />
-            ),
+    <OuterContainer>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <Drawer
+          drawerContent={CustomDrawer}
+          screenOptions={{
+            headerShown: false,
+            drawerActiveTintColor: Colors.gray[2],
           }}
-        />
+        >
+          <Drawer.Screen
+            name="index"
+            options={{
+              title: "Home",
+              drawerLabel: "Home",
+              drawerIcon: ({ size }) => (
+                <MaterialIcons name="home" size={size} color={Colors.gray[2]} />
+              ),
+            }}
+          />
 
-        <Drawer.Screen
-          name="account"
-          options={{
-            drawerLabel: "My Account",
-            title: "My Account",
-            headerShown: true,
-            headerLeft: () => <BackButton />,
-            drawerIcon: ({ size }) => (
-              <MaterialIcons
-                name="account-circle"
-                size={size}
-                color={Colors.gray[2]}
-              />
-            ),
-          }}
-        />
+          <Drawer.Screen
+            name="account"
+            options={{
+              drawerLabel: "My Account",
+              title: "My Account",
+              headerShown: true,
+              headerLeft: () => <BackButton />,
+              drawerIcon: ({ size }) => (
+                <MaterialIcons
+                  name="account-circle"
+                  size={size}
+                  color={Colors.gray[2]}
+                />
+              ),
+            }}
+          />
 
-        <Drawer.Screen
-          name="payments"
-          options={{
-            drawerLabel: "My Payments",
-            title: "My Payments",
-            headerShown: true,
-            headerLeft: () => <BackButton />,
-            drawerIcon: ({ size }) => (
-              <MaterialIcons
-                name="payment"
-                size={size}
-                color={Colors.gray[2]}
-              />
-            ),
-          }}
-        />
+          <Drawer.Screen
+            name="payments"
+            options={{
+              drawerLabel: "My Payments",
+              title: "My Payments",
+              headerShown: true,
+              headerLeft: () => <BackButton />,
+              drawerIcon: ({ size }) => (
+                <MaterialIcons
+                  name="payment"
+                  size={size}
+                  color={Colors.gray[2]}
+                />
+              ),
+            }}
+          />
 
-        <Drawer.Screen
-          name="trip-history"
-          options={{
-            drawerLabel: "Trip History",
-            title: "Trip History",
-            headerShown: true,
-            headerLeft: () => <BackButton />,
-            drawerIcon: ({ size }) => (
-              <MaterialIcons
-                name="history"
-                size={size}
-                color={Colors.gray[2]}
-              />
-            ),
-          }}
-        />
-      </Drawer>
-    </GestureHandlerRootView>
+          <Drawer.Screen
+            name="trip-history"
+            options={{
+              drawerLabel: "Trip History",
+              title: "Trip History",
+              headerShown: true,
+              headerLeft: () => <BackButton />,
+              drawerIcon: ({ size }) => (
+                <MaterialIcons
+                  name="history"
+                  size={size}
+                  color={Colors.gray[2]}
+                />
+              ),
+            }}
+          />
+        </Drawer>
+      </GestureHandlerRootView>
+    </OuterContainer>
   );
 };
 

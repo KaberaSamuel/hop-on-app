@@ -1,22 +1,12 @@
-import { Colors } from "@/constants/globalStyles";
-import { StyleSheet, Text, View } from "react-native";
+import { CommonStyles } from "@/constants/globalStyles";
+import { Text, View } from "react-native";
 
 export default function Account() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>My Account</Text>
+    <View style={CommonStyles.container}>
+      <View style={CommonStyles.contentContainer}>
+        <Text style={{ padding: 20 }}>My Account</Text>
+      </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.dark[2],
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  text: {
-    color: "#fff",
-  },
-});
