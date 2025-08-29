@@ -5,7 +5,7 @@ export const baseFontSize = 16;
 export const Colors = {
   white: "#fff",
   black: "#000",
-  blue: { 1: "#bedbff", 2: "#2b7fff" },
+  blue: { 0: "#bedbff", 2: "#2b7fff" },
 
   gray: { 0: "#e5e5e5", 1: "#d4d4d4", 1.5: "#a6a09b", 2: "#6b7280" },
 

@@ -78,7 +78,7 @@ export default function Settings() {
               <Text style={{ flex: 1 }}>Allow drivers to call me</Text>
               <Switch
                 trackColor={{ false: Colors.gray[2], true: Colors.blue[2] }}
-                thumbColor={isEnabled ? Colors.blue[1] : Colors.gray[1]}
+                thumbColor={isEnabled ? Colors.blue[0] : Colors.gray[1]}
                 ios_backgroundColor={Colors.white}
                 onValueChange={toggleSwitch}
                 value={isEnabled}
