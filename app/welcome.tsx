@@ -66,9 +66,11 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.blue[2],
     marginBottom: 20,
     borderRadius: 10,
+    fontWeight: "600",
   },
 
   authText: {
+    fontWeight: "600",
     color: Colors.white,
     textAlign: "center",
   },
