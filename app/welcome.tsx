@@ -1,3 +1,4 @@
+import OuterContainer from "@/components/OuterContainer";
 import { baseFontSize, Colors } from "@/constants/globalStyles";
 import { Link } from "expo-router";
 import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
@@ -6,30 +7,32 @@ const window = Dimensions.get("window");
 
 export default function Welcome() {
   return (
-    <View style={styles.container}>
-      <View>
-        <Image
-          source={require("@/assets/images/app-logo.png")}
-          style={styles.image}
-        />
+    <OuterContainer>
+      <View style={styles.container}>
+        <View>
+          <Image
+            source={require("@/assets/images/app-logo.png")}
+            style={styles.image}
+          />
 
-        <Text style={styles.important}>Hop On</Text>
-        <Text style={styles.aboutText}>Transportation at your hands</Text>
-      </View>
+          <Text style={styles.important}>Hop On</Text>
+          <Text style={styles.aboutText}>Transportation at your hands</Text>
+        </View>
 
-      <View>
-        <Link href="/signup" style={[styles.authText, styles.signup]}>
-          Sign Up
-        </Link>
-        <Link href="/login" style={styles.authText}>
-          Login
-        </Link>
+        <View>
+          <Link href="/signup" style={[styles.authText, styles.signup]}>
+            Sign Up
+          </Link>
+          <Link href="/login" style={styles.authText}>
+            Login
+          </Link>
 
-        {/* <Link href="/(drawer)" style={styles.authText}>
+          {/* <Link href="/(drawer)" style={styles.authText}>
           Go to home
         </Link> */}
+        </View>
       </View>
-    </View>
+    </OuterContainer>
   );
 }
 
@@ -40,7 +43,7 @@ const styles = StyleSheet.create({
     paddingBottom: 80,
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: Colors.dark[1],
+    backgroundColor: Colors.dark[2],
   },
 
   image: {
@@ -59,9 +62,9 @@ const styles = StyleSheet.create({
 
   signup: {
     width: window.width * 0.9,
-    paddingVertical: 12,
+    paddingVertical: 15,
     backgroundColor: Colors.blue[2],
-    marginBottom: 15,
+    marginBottom: 20,
     borderRadius: 10,
   },
 
