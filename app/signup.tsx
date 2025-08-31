@@ -1,4 +1,5 @@
 import { Colors } from "@/constants/globalStyles";
+import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { Link } from "expo-router";
 import { useState } from "react";
@@ -17,14 +18,23 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
+import * as yup from "yup";
 
 interface SignupFormTypes {
   email: string;
 }
 
+const formSchema = yup.object().shape({
+  email: yup
+    .string()
+    .email("Invalid email format")
+    .required("Email is required"),
+});
+
 export default function SignUp() {
+  // animated loader variables
   const { width: screenWidth } = useWindowDimensions();
-  const animatedWidth = useSharedValue(screenWidth - 50);
+  const animatedWidth = useSharedValue(screenWidth - 40);
   const loaderBaseSize = 40;
 
   const animatedStyle = useAnimatedStyle(() => {
@@ -34,8 +44,13 @@ export default function SignUp() {
     };
   });
 
+  // form variables
   const [isLoading, setIsLoading] = useState(false);
-  const { control, handleSubmit } = useForm<SignupFormTypes>();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignupFormTypes>({ resolver: yupResolver(formSchema) });
   const baseApi = "https://307cab826bb3.ngrok-free.app/users";
 
   const onSubmit = async (data: SignupFormTypes) => {
@@ -49,7 +64,7 @@ export default function SignUp() {
       // simulating loading
       setTimeout(() => {
         setIsLoading(false);
-        animatedWidth.value = withTiming(screenWidth - 50, { duration: 300 });
+        animatedWidth.value = withTiming(screenWidth - 40, { duration: 300 });
       }, 2000);
     }
   };
@@ -69,9 +84,13 @@ export default function SignUp() {
           />
         )}
         name="email"
-        rules={{ required: true }}
         defaultValue=""
       />
+
+      {/* displaying validation error */}
+      {errors.email && (
+        <Text style={{ color: "red" }}>{errors.email.message}</Text>
+      )}
 
       <View>
         <Animated.View
