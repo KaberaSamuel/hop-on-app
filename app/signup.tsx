@@ -3,25 +3,54 @@ import axios from "axios";
 import { Link } from "expo-router";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  ActivityIndicator,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  useWindowDimensions,
+} from "react-native";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated";
 
 interface SignupFormTypes {
   email: string;
 }
 
 export default function SignUp() {
+  const { width: screenWidth } = useWindowDimensions();
+  const animatedWidth = useSharedValue(screenWidth - 50);
+  const loaderBaseSize = 40;
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      width: animatedWidth.value,
+      height: loaderBaseSize,
+    };
+  });
+
   const [isLoading, setIsLoading] = useState(false);
   const { control, handleSubmit } = useForm<SignupFormTypes>();
-  const baseApi = "https://c45e4c8ccb8d.ngrok-free.app/users";
+  const baseApi = "https://307cab826bb3.ngrok-free.app/users";
 
   const onSubmit = async (data: SignupFormTypes) => {
     try {
+      animatedWidth.value = withTiming(loaderBaseSize, { duration: 300 });
       setIsLoading(true);
       await axios.post(`${baseApi}/register/`, data);
     } catch (error) {
       console.log(error);
     } finally {
-      setIsLoading(false);
+      // simulating loading
+      setTimeout(() => {
+        setIsLoading(false);
+        animatedWidth.value = withTiming(screenWidth - 50, { duration: 300 });
+      }, 2000);
     }
   };
 
@@ -44,12 +73,30 @@ export default function SignUp() {
         defaultValue=""
       />
 
-      <Pressable onPress={handleSubmit(onSubmit)}>
-        <Text style={styles.next}>Next</Text>
-      </Pressable>
-      <Link href="/login" style={styles.login}>
-        Login
-      </Link>
+      <View>
+        <Animated.View
+          style={[
+            styles.signup,
+            animatedStyle,
+            isLoading && {
+              marginHorizontal: "auto",
+              borderRadius: 25,
+            },
+          ]}
+        >
+          {isLoading ? (
+            <ActivityIndicator color={Colors.white} />
+          ) : (
+            <Pressable onPress={handleSubmit(onSubmit)}>
+              <Text style={styles.next}>Next</Text>
+            </Pressable>
+          )}
+        </Animated.View>
+
+        <Link href="/login" style={styles.login}>
+          Login
+        </Link>
+      </View>
     </View>
   );
 }
@@ -61,19 +108,28 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
 
-  next: {
-    width: "auto",
-    marginVertical: 15,
-    paddingVertical: 15,
-    color: Colors.white,
+  signup: {
+    alignSelf: "center",
     backgroundColor: Colors.blue[2],
+    padding: 5,
+    marginTop: 10,
+    borderRadius: 15,
+
+    // centering children
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  next: {
+    color: Colors.white,
     textAlign: "center",
-    borderRadius: 10,
     fontWeight: "600",
   },
 
   login: {
-    fontWeight: "600",
+    marginTop: 20,
+    fontWeight: "700",
     textAlign: "center",
   },
 
